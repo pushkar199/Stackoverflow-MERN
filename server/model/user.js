@@ -6,6 +6,9 @@ const userSchema = new Schema({
     email: String,
     password: String,
     name:String,
+    about: { type: String },
+    tags: { type: [String] },
+    joinedOn: { type: Date, default: Date.now },
 })
 
 
