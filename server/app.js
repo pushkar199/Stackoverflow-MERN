@@ -3,7 +3,10 @@ const express = require('express');
 const app = express();
 const User = require("./model/user");
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const userRoutes = require("./routes/users");
+const questionRoutes = require('./routes/Questions');
+const answerRoutes = require('./routes/Answers');
 const PORT = process.env.PORT
 
 
@@ -15,7 +18,9 @@ mongoose.connect("mongodb://localhost:27017/DemoAppFirst", { useNewUrlParser: tr
     .catch((err) => console.log(err));
 
 
-app.use("/", require("./routes/users"));
+app.use("/", userRoutes);
+app.use("/", questionRoutes);
+app.use("/", answerRoutes);
 
 
 app.listen(PORT, function (err) {
